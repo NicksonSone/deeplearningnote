@@ -45,7 +45,8 @@ For ![](lin_equ.png) to **have a solution**, *matrix may not have an inverse, wh
 
 
 ### 2.5 Norms
-* Norm: measure size of a vector ![](norm.png)  
+* Norm: measure size of a vector
+![](norm.png)  
 properties:  
 ![](norm_property.png)
 
@@ -88,18 +89,68 @@ The dot product of two vectors can be rewritten in terms of norms
 * Orthogonal matrix: a square matrix whose **rows and columns** are **mutually orthonormal**  
 ![](orthonormal_mat.png)
 
-  It implies ![](inv_equ_transp.png). Orthogonal matrices are of interest because **their inverse is very cheap to compute**
+  It implies **orthogonal matrices have inverse** and ![](inv_equ_transp.png). Orthogonal matrices are of interest because **their inverse is very cheap to compute**
 
 ### 2.7 Eigendecomposition
+While an integer can be decomposed into prime factors, a matrix have similar decomposition called eigendecomposition.  
+***Av = λv***   
+where A is a square matrix and v is a vector. Therefore, **multiplying v by A has the same effect of stretching  v by λ.**  
+![](scale_eigen.png)
+
+* Eigenvector: v
+* Eigenvalue: λ
+* left eigenvector: ![](left_eigenvector.png)
+* eigendecomposition: a matrix A has n linearly independent eigenvectors, {v(1) , . . . ,v(n)}, with corresponding eigenvalues {λ1 , . . . , λn}.  
+![](eigendecomposition.png)
+
+Strictly speaking, there is an infinity of eigenvectors associated to each eigenvalue, because any scalar multiple of an eigenvector is still an eigenvector. **So we usually normalize the eigenvectors.**
+
+* positive-semi definite: a matrix which can be obtained as the product of a matrix of real numbers and its transpose.
+![](semi_pos_def.png)
+* positive-semi definite: a matrix whose eigenvalues are all non-negative
+* positive definite: a matrix whose eigenvalues are all positive
+* negative-semi definite: a matrix whose eigenvalues are all non-positive
+* negative definite: a matrix whose eigenvalues are all positive
+
+positive-semi definite matrices are **real symmetric matrices**. They are related to multivariate analysis like *correlation matrices, covariance and cross-product matrices.*
+
+The important properties of a positive semi-definite matrix is
+that its eigenvalues are always positive or null, and that **its eigenvectors are pairwise orthogonal when their eigenvalues are different. The eigenvectors are also composed of real values**
+
+***There is a contradictions between http://www.utdallas.edu/~herve/Abdi-EVD2007-pretty.pdf  and deep learning book. It may be a misunderstanding***
+
+In http://www.utdallas.edu/~herve/Abdi-EVD2007-pretty.pdf
+>Because eigenvectors corresponding to different eigenvalues are orthogonal, it is possible to store all the eigenvectors in an orthogonal
+matrix (recall that a matrix is orthogonal when the product of
+this matrix by its transpose is a diagonal matrix).
+This implies the following equality:  
+U^−1 = U^T. and A = QΛQ^T
+
+When two eigenvectors share the same eigenvalues, I think it is not possible to store the eigenvectors in an orthogonal matrix, which means expression A = QΛQ^T does always not hold.
+
+But deep learning book says
+>every real symmetric matrix can be decomposed into an expression using only real-valued eigenvectors and eigenvalues:
+*A = QΛQ^T*
+
+Regardless of distinctiveness of eigenvalues, a real symmetric matrix always has such expression.
+
+
+Procedure to find eigenvalues and eigenvectors:
+1. *Av = λv  => (A - λI)v = 0*
+2. solve the deterministic equation det(A - λI) = 0. Results are eigenvalues .
+3. use eigenvalues to find eigenvectors with definition ***Av = λv***
 
 ### 2.8 Singular Value Decomposition
+Suppose that A is an m×n matrix.  
+***A = UDV^T***   
+U is defined to be an m×m matrix, D to be an m×n matrix, and V to be an n×n matrix. The matrices U and V are both defined to be **orthogonal matrices**. The matrix D is defined to be a **diagonal matrix**. Note that D is **not necessarily square.**
 ### 2.9 The Moore-Penrose Pseudoinverse
 ### 2.10 The Trace Operator
 ### 2.11  The Determinant
 ### 2.12  Example: Principal Components Analysis
 
 ## 3 Probability and Information Theory
-###3 .1 Why Probability
+### 3 .1 Why Probability
 ### 3.2 Random Variables
 ### 3.3 Probability Distributions
 ### 3.4 Marginal Probability
